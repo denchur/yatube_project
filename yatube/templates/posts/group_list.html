@@ -1,31 +1,20 @@
 {% extends 'base.html' %}
-    {% block title %}
-      {{ title }}
-    {% endblock %}
+{% block title %}
+  {{ group.title }}
+{% endblock %}
 
-    {% block content %}
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
-      <!-- класс py-5 создает отступы сверху и снизу блока -->
-      <div class="container py-5">
-        <h1>Лев Толстой – зеркало русской революции.</h1>
-        <p>
-          {{ group }}.
-        </p>
-        <article>
-          {% for post in posts %}
-          <ul>
-            <li>
-              Автор: {{ post.author.get_full_name }}
-            </li>
-            <li>
-              Дата публикации: {{ post.pub_date|date:"d E Y" }}
-            </li>
-          </ul>      
-          <p>
-            {{ post.text }}
-          </p>
-          {% if not forloop.last %}<hr>{% endif %}
-          {% endfor %}          
-        <!-- под последним постом нет линии -->
-      </div>  
-      {% endblock %}
+{% block content %}
+  <div class="container py-5">
+    <h1>{{ group.title }}</h1>
+    <p>
+      {{ group.description }}
+    </p>
+    {% for post in page_obj %}
+      {% include 'includes/print_post.html' with show_link_profile=True show_link_detali=True  %}
+      {% if not forloop.last %}
+        <hr>
+      {% endif %} 
+    {% endfor %}          
+    {% include 'includes/paginator.html' %}
+  </div>  
+{% endblock %}
