@@ -11,6 +11,12 @@ Django 2.2.19
 ```
 pip install -r requirements.txt
 ``` 
+- Проведите миграции
+```
+1) cd yatube
+
+2) python manage.py migrate
+```
 - В папке с файлом manage.py выполните команду:
 ```
 python3 manage.py runserver
