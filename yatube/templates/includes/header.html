@@ -5,10 +5,10 @@
       <div class="container">
         <a class="navbar-brand" href="{% url 'posts:home_page' %}">
           <img src="{% static 'img/logo.png' %}"
-              width="30"
-              height="30"
-              class="d-inline-block align-top"
-              alt="">
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+            alt="">
           <span style="color:red">Ya</span>tube
         </a>
         <ul class="nav nav-pills">
@@ -22,12 +22,14 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link {% if view_name == 'posts:post_create' %} active {% endif %}" href="{% url 'posts:post_create' %}">
+              <a class="nav-link {% if view_name == 'posts:post_create' %} active {% endif %}" 
+                href="{% url 'posts:post_create' %}">
                 Новая запись
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-light {% if view_name == 'users:password_change' %}active{% endif %}"
+              <a class="nav-link link-light {% if view_name == 'users:password_change' %}
+                active{% endif %}"
                 href="{% url 'users:password_change' %}">Изменить пароль</a>
             </li>
             <li class="nav-item">

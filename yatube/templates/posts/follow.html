@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+  Последние посты ваших любимых авторов
+{% endblock %}
+{% block content %}
+  {% load cache %}
+    {% include 'includes/switcher.html' with follow=True %}
+    {% cache 20 index_page with page_obj %}
+    <div class="container py-5">     
+      <h1>Последние посты ваших любимых авторов</h1>
+      {% for post in page_obj%}
+        {% include 'includes/print_post.html' with show_link_group=True show_link_profile=True show_link_detali=True %}
+        {% if not forloop.last %}
+          <hr>
+        {% endif %}
+      {% endfor %} 
+      {% include 'includes/paginator.html' %}
+    </div>  
+  {% endcache %}
+{% endblock %}
